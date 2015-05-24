@@ -19,19 +19,10 @@ knit        : slidify::knit2slides
 
 ```r
 hist(loan_train$logit.prob, breaks=50, main=NULL, xlab="Probability of default, %")
-```
-
-```
-## Error in hist(loan_train$logit.prob, breaks = 50, main = NULL, xlab = "Probability of default, %"): object 'loan_train' not found
-```
-
-```r
 lines(c(0.1, 0.1), c(0, 35000), col="red")
 ```
 
-```
-## Error in plot.xy(xy.coords(x, y), type = type, ...): plot.new has not been called yet
-```
+![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png) 
 
 --- .class #id 
 
@@ -42,7 +33,7 @@ lines(c(0.1, 0.1), c(0, 35000), col="red")
 3. Click the "Submit" button.
 4. Get the probability of loan default.
 5. See the placement of the borrower at the distribution histogram.
-6. Decide whether issue the loan or not according to bank instructions (issue if cutoff level is higher than some probability, refuse otherwise).
+6. Decide whether issue the loan or not according to bank instructions (issue if the probability of default is lower than some cutoff level, refuse otherwise).
 7. Repeat steps 1-6 for another borrower.
 
 --- .class #id
@@ -57,7 +48,7 @@ dim(loans)
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'loans' not found
+## [1] 104681     12
 ```
 For simplicity of prediction implementation, logistic regression was used.
 $$F(x)=\frac{1}{1+e^{-{(\beta_{0}+\beta_{1}x)}}}$$

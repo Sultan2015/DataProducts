@@ -30,7 +30,7 @@ lines(c(0.1, 0.1), c(0, 35000), col="red")
 3. Click the "Submit" button.
 4. Get the probability of loan default.
 5. See the placement of the borrower at the distribution histogram.
-6. Decide whether issue the loan or not according to bank instructions (issue if cutoff level is higher than some probability, refuse otherwise).
+6. Decide whether issue the loan or not according to bank instructions (issue if the probability of default is lower than some cutoff level, refuse otherwise).
 7. Repeat steps 1-6 for another borrower.
 
 --- .class #id
