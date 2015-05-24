@@ -19,10 +19,19 @@ knit        : slidify::knit2slides
 
 ```r
 hist(loan_train$logit.prob, breaks=50, main=NULL, xlab="Probability of default, %")
+```
+
+```
+## Error in hist(loan_train$logit.prob, breaks = 50, main = NULL, xlab = "Probability of default, %"): object 'loan_train' not found
+```
+
+```r
 lines(c(0.1, 0.1), c(0, 35000), col="red")
 ```
 
-![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png) 
+```
+## Error in plot.xy(xy.coords(x, y), type = type, ...): plot.new has not been called yet
+```
 
 --- .class #id 
 
@@ -48,7 +57,7 @@ dim(loans)
 ```
 
 ```
-## [1] 104681     12
+## Error in eval(expr, envir, enclos): object 'loans' not found
 ```
 For simplicity of prediction implementation, logistic regression was used.
 $$F(x)=\frac{1}{1+e^{-{(\beta_{0}+\beta_{1}x)}}}$$

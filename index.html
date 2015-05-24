@@ -53,10 +53,16 @@
 </ol>
 
 <pre><code class="r">hist(loan_train$logit.prob, breaks=50, main=NULL, xlab=&quot;Probability of default, %&quot;)
-lines(c(0.1, 0.1), c(0, 35000), col=&quot;red&quot;)
 </code></pre>
 
-<p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+<pre><code>## Error in hist(loan_train$logit.prob, breaks = 50, main = NULL, xlab = &quot;Probability of default, %&quot;): object &#39;loan_train&#39; not found
+</code></pre>
+
+<pre><code class="r">lines(c(0.1, 0.1), c(0, 35000), col=&quot;red&quot;)
+</code></pre>
+
+<pre><code>## Error in plot.xy(xy.coords(x, y), type = type, ...): plot.new has not been called yet
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -92,7 +98,7 @@ The model was trained using rather large sample.</p>
 <pre><code class="r">dim(loans)
 </code></pre>
 
-<pre><code>## [1] 104681     12
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;loans&#39; not found
 </code></pre>
 
 <p>For simplicity of prediction implementation, logistic regression was used.
