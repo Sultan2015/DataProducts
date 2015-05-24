@@ -14,7 +14,7 @@ knit        : slidify::knit2slides
 ## What the application does
 
 1. Simple scoring model for retail banking.
-2. Takes 9 inputs, generates estimated probalility of default.
+2. Takes 9 inputs, generates estimated probability of default.
 3. Put this borrower on the plot of sample distribution. Like this:
 
 ```r
@@ -31,16 +31,16 @@ lines(c(0.1, 0.1), c(0, 35000), col="red")
 1. Request all mentioned parameters from a potential borrower.
 2. Enter all these numbers in fields in the left column of the application page.
 3. Click the "Submit" button.
-4. Get the probabiity of loan default.
+4. Get the probability of loan default.
 5. See the placement of the borrower at the distribution histogram.
-6. Decide wheather issue the loan or not according to bank instructions (issue if cuttoff level is higher than some probability, refuse otherwise).
+6. Decide whether issue the loan or not according to bank instructions (issue if cutoff level is higher than some probability, refuse otherwise).
 7. Repeat steps 1-6 for another borrower.
 
 --- .class #id
 
 ## Technical details
 
-In the application, I use coefficients obtained from previosly trained model.
+In the application, I use coefficients obtained from previously trained model.
 The model was trained using rather large sample.
 
 ```r
@@ -50,9 +50,9 @@ dim(loans)
 ```
 ## [1] 104681     12
 ```
-For simplicity of prediction implementaion, logistic regression was used.
+For simplicity of prediction implementation, logistic regression was used.
 $$F(x)=\frac{1}{1+e^{-{(\beta_{0}+\beta_{1}x)}}}$$
-Out of 10 features, 9 had significant coefficients. Debt ratio was dropped (using this sample; typically, this  ratio is considered as important one in financial risk literature).
+Out of 10 features, 9 had significant coefficients. Debt ratio was dropped (using this sample; typically, this ratio is considered as important one in financial risk literature).
 
 --- .class #id
 

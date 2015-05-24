@@ -48,7 +48,7 @@
   <article data-timings="">
     <ol>
 <li>Simple scoring model for retail banking.</li>
-<li>Takes 9 inputs, generates estimated probalility of default.</li>
+<li>Takes 9 inputs, generates estimated probability of default.</li>
 <li>Put this borrower on the plot of sample distribution. Like this:</li>
 </ol>
 
@@ -71,9 +71,9 @@ lines(c(0.1, 0.1), c(0, 35000), col=&quot;red&quot;)
 <li>Request all mentioned parameters from a potential borrower.</li>
 <li>Enter all these numbers in fields in the left column of the application page.</li>
 <li>Click the &quot;Submit&quot; button.</li>
-<li>Get the probabiity of loan default.</li>
+<li>Get the probability of loan default.</li>
 <li>See the placement of the borrower at the distribution histogram.</li>
-<li>Decide wheather issue the loan or not according to bank instructions (issue if cuttoff level is higher than some probability, refuse otherwise).</li>
+<li>Decide whether issue the loan or not according to bank instructions (issue if cutoff level is higher than some probability, refuse otherwise).</li>
 <li>Repeat steps 1-6 for another borrower.</li>
 </ol>
 
@@ -86,7 +86,7 @@ lines(c(0.1, 0.1), c(0, 35000), col=&quot;red&quot;)
     <h2>Technical details</h2>
   </hgroup>
   <article data-timings="">
-    <p>In the application, I use coefficients obtained from previosly trained model.
+    <p>In the application, I use coefficients obtained from previously trained model.
 The model was trained using rather large sample.</p>
 
 <pre><code class="r">dim(loans)
@@ -95,9 +95,9 @@ The model was trained using rather large sample.</p>
 <pre><code>## [1] 104681     12
 </code></pre>
 
-<p>For simplicity of prediction implementaion, logistic regression was used.
+<p>For simplicity of prediction implementation, logistic regression was used.
 \[F(x)=\frac{1}{1+e^{-{(\beta_{0}+\beta_{1}x)}}}\]
-Out of 10 features, 9 had significant coefficients. Debt ratio was dropped (using this sample; typically, this  ratio is considered as important one in financial risk literature).</p>
+Out of 10 features, 9 had significant coefficients. Debt ratio was dropped (using this sample; typically, this ratio is considered as important one in financial risk literature).</p>
 
   </article>
   <!-- Presenter Notes -->
