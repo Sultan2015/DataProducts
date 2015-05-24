@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loan default predictor</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Loan default predictor">
+  <meta name="author" content="Dmytro Goriunov">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Loan default predictor</h1>
+    <h2>Simple retail loan scoring tool</h2>
+    <p>Dmytro Goriunov<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>What the application does</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Simple scoring model for retail banking.</li>
+<li>Takes 9 inputs, generates estimated probalility of default.</li>
+<li>Put this borrower on the plot of sample distribution. Like this:</li>
+</ol>
+
+<pre><code class="r">hist(loan_train$logit.prob, breaks=50, main=NULL, xlab=&quot;Probability of default, %&quot;)
+lines(c(0.1, 0.1), c(0, 35000), col=&quot;red&quot;)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>User instructions</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Request all mentioned parameters from a potential borrower.</li>
+<li>Enter all these numbers in fields in the left column of the application page.</li>
+<li>Click the &quot;Submit&quot; button.</li>
+<li>Get the probabiity of loan default.</li>
+<li>See the placement of the borrower at the distribution histogram.</li>
+<li>Decide wheather issue the loan or not according to bank instructions (issue if cuttoff level is higher than some probability, refuse otherwise).</li>
+<li>Repeat steps 1-6 for another borrower.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Technical details</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>In the application, I use coefficients obtained from previosly trained model.
+The model was trained using rather large sample.</p>
+
+<pre><code class="r">dim(loans)
+</code></pre>
+
+<pre><code>## [1] 104681     12
+</code></pre>
+
+<p>For simplicity of prediction implementaion, logistic regression was used.
+\[F(x)=\frac{1}{1+e^{-{(\beta_{0}+\beta_{1}x)}}}\]
+Out of 10 features, 9 had significant coefficients. Debt ratio was dropped (using this sample; typically, this  ratio is considered as important one in financial risk literature).</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Literature</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Bellovary, Jodi, Don Giacomino, and Michael Akers (2007): A review of bankruptcy prediction studies: 1930 to present. Journal of Financial Education, Volume 33 (Winter 2007).</li>
+<li>Dambolena, Ismael and Joel Shulman (1988): A primary rule for detecting bankruptcy: Watch the cash. Financial Analysts Journal 44(5): 74-78.</li>
+<li>Martin, Daniel, (1977): Early warning of bank failure: a logit regression approach, Journal of Banking and Finance, number 1: 249-276.</li>
+<li>Ohlson, James, (1980): Financial ratios and the probabilistic prediction of bankruptcy, Journal of Accounting Research, Spring: 109-131.</li>
+<li>Wiginton, John, (1980): A note on the comparison of logit and discriminant models of consumer credit behaviour, Journal of Financial and Quantitative Analysis, 15: 757-770.</li>
+<li>Zavgren, Christine, (1983): The prediction of corporate failure: the state of the art, Journal of Accounting Literature, number 2: 1-38.</li>
+<li>Zmijewski, Mark, (1984): Methodological issues related to the estimation of financial distress prediction models, Journal of Accounting Research, 20: 59-82.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='What the application does'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='User instructions'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Technical details'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Literature'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
